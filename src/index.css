@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-vh-purple: #7B1FCC;
+  --color-vh-red: #E8192C;
+  --color-vh-cyan: #00AAEE;
+  --color-vh-lime: #8DC63F;
+  --color-vh-ochre: #C4A820;
+  --color-vh-dark: #1A1A3E;
+  --color-vh-orange: #FF8C00;
+  --color-vh-light: #FAFAFA;
+
+  --bg-primary: var(--color-vh-light);
+  --text-primary: var(--color-vh-dark);
+}
+
+@layer base {
+  :root {
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F8F8FA;
+    --text-primary: #1A1A3E;
+    --text-secondary: #52527A;
+    --border-subtle: rgba(26, 26, 62, 0.08);
+    --noise-opacity: 0.2;
+  }
+
+  .dark {
+    --bg-primary: #1A1A3E;
+    --bg-secondary: #24244D;
+    --text-primary: #FAFAFA;
+    --text-secondary: #B8B8D1;
+    --border-subtle: rgba(250, 250, 250, 0.05);
+    --noise-opacity: 1;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  }
+}
+
+.text-gradient-primary {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(135deg, var(--color-vh-purple) 0%, var(--color-vh-red) 100%);
+}
+
+.text-gradient-secondary {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(135deg, var(--color-vh-cyan) 0%, var(--color-vh-lime) 100%);
+}
+
+/* Custom visual noise overlay for the maximalist aesthetic */
+.bg-noise {
+  position: relative;
+}
+
+.bg-noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: overlay;
+  opacity: var(--noise-opacity);
+}
+
+/* Hide scrollbar for cleaner look if desired, though we'll keep default for usability */
+html {
+  scroll-behavior: smooth;
+}
