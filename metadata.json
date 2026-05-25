@@ -2,5 +2,7 @@
   "name": "Vitor Hortêncio - Web Designer",
   "description": "Crio landing pages e sites para pequenos negócios em Fortaleza. Fale direto comigo — sem agência, sem enrolação.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
